@@ -52,4 +52,17 @@ header{align-items:center;gap:28px}.header-title h1{font-size:25px;white-space:n
 @media(prefers-reduced-motion:reduce){#theme-toggle .theme-thumb{transition:none}::view-transition-new(root){animation:none}}
 .chart-labels{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--muted);margin-bottom:8px}.chart-plot{position:relative;padding-bottom:24px}.chart-plot svg{height:76px;margin:0}.threshold-line{stroke:var(--critical);stroke-dasharray:4 4;stroke-width:1;vector-effect:non-scaling-stroke}.chart-hitpoints{position:absolute;inset:0 0 0 0}.chart-point{position:absolute;top:0;bottom:0;width:24px;transform:translateX(-50%);border:0;background:transparent;color:var(--muted);font-size:10px;padding:0}.chart-point:first-child{transform:none}.chart-point:last-child{transform:translateX(-100%)}.chart-point span{position:absolute;bottom:0;left:50%;transform:translateX(-50%);white-space:nowrap}.chart-point:first-child span{left:0;transform:none}.chart-point:last-child span{left:auto;right:0;transform:none}.chart-point:hover,.chart-point:focus-visible{background:color-mix(in srgb,var(--muted) 12%,transparent)}.run-chart figcaption{display:block;min-height:20px;color:var(--text);font-variant-numeric:tabular-nums}.table-wrap{max-height:420px;overflow:auto}thead th{position:sticky;top:0;background:var(--card);z-index:1}#sort-occupancy{font:inherit;color:inherit;background:transparent;border:0;padding:0;white-space:nowrap;cursor:pointer}
 @media(min-width:1200px){.chart-labels{font-size:12px}.chart-point{font-size:11px}.run-chart figcaption{font-size:12px}.chart-plot svg{height:84px}}
+/* Overhead lighting: quiet downward shadows, no luminous edge halos. */
+:root,:root[data-theme=light]{--raised:0 5px 12px rgba(48,44,41,.12);--inset:inset 0 2px 4px rgba(48,44,41,.13);--press-fill:#d7d0ca}
+:root[data-theme=dark]{--raised:0 6px 14px rgba(0,0,0,.24);--inset:inset 0 2px 5px rgba(0,0,0,.28);--press-fill:#241819}
+.card,.staffing.card,#wards,.workspace .primary>.work-section:first-child{box-shadow:var(--raised);border:1px solid color-mix(in srgb,var(--line) 18%,transparent)}
+dialog{box-shadow:0 16px 38px rgba(0,0,0,.24);border:1px solid color-mix(in srgb,var(--line) 40%,transparent)}
+dialog select{box-shadow:none;background:var(--bg);border:1px solid var(--line);border-radius:6px}
+nav a{transition:transform 170ms cubic-bezier(.2,.8,.2,1),background-color 170ms ease,box-shadow 170ms ease}
+nav a:hover{box-shadow:none;background:color-mix(in srgb,var(--card) 65%,var(--line) 10%)}
+nav a[aria-current]{background:var(--card);box-shadow:0 3px 7px rgba(0,0,0,.12)}
+nav a:active,.filters button:active{transform:translateY(2px) scale(.985);background:var(--press-fill);box-shadow:var(--inset)}
+nav a.is-pressing,.filters button.is-pressing{animation:creamy-press 260ms cubic-bezier(.2,.8,.2,1)}
+@keyframes creamy-press{0%{transform:translateY(0) scale(1)}35%{transform:translateY(2px) scale(.982);box-shadow:var(--inset)}100%{transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){nav a,.filters button{transition:none}nav a.is-pressing,.filters button.is-pressing{animation:none}nav a:active,.filters button:active{transform:none}}
 
