@@ -28,6 +28,7 @@ const data=[
 {id:4,category:'revenue',severity:'warning',label:'Due for review',title:'PH-99201: PACS study missing from CF4 documents',detail:'₱145,000 · 12 days left in the demo filing window. Verify the supporting study before submission.',owner:'J. Tan · Claims team',age:'1d 6h',action:'Review documents'},
 {id:5,category:'clinical',severity:'info',label:'Pending',title:'ICU-04 transfer awaiting attending acknowledgement',detail:'Confirm the step-down receiving team before releasing the ICU bed.',owner:'Dr. A. Ramos · Attending',age:'2h 15m',action:'Review transfer'}];
 document.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>{document.querySelectorAll("nav a").forEach(x=>x.removeAttribute("aria-current"));a.setAttribute("aria-current","location")}));
+document.querySelectorAll('nav a, .filters button').forEach(control=>{control.addEventListener('click',()=>{control.classList.remove('is-pressing');void control.offsetWidth;control.classList.add('is-pressing')});control.addEventListener('animationend',()=>control.classList.remove('is-pressing'))});
 const themeButton=document.querySelector('#theme-toggle');function syncTheme(){const light=document.documentElement.dataset.theme==='light';document.querySelector('#theme-label').textContent=light?'Light':'Dark';themeButton.setAttribute('aria-checked',String(!light));document.querySelector('meta[name="theme-color"]').content=light?'#e6e2de':'#0f0607'}let themeTransitionRunning=false;
 themeButton.onclick=async()=>{
   if(themeTransitionRunning)return;
